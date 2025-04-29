@@ -1,4 +1,4 @@
-# frida-ios-dump
+a# frida-ios-dump
 Pull a decrypted IPA from a jailbroken device
 
 
@@ -7,7 +7,8 @@ Pull a decrypted IPA from a jailbroken device
  1. Install [frida](http://www.frida.re/) on device
  2. `sudo pip install -r requirements.txt --upgrade`
  3. Run usbmuxd/iproxy SSH forwarding over USB (Default 2222 -> 22). e.g. `iproxy 2222 22`
- 4. Run ./dump.py `Display name` or `Bundle identifier`
+ 4. Launch the app in iOS and fetch its PID using `frida-ps -Uai | grep -i appname`
+ 5. Run ./dump.py dump.py -H 127.0.0.1 -p 2222 -u mobile -P alpine `PID`
 
 For SSH/SCP make sure you have your public key added to the target device's ~/.ssh/authorized_keys file.
 
@@ -52,6 +53,8 @@ If the following error occurs:
 * causes device to reboot
 * lost connection
 * unexpected error while probing dyld of target process
+* additionally you can debug usbmuxd using `sudo usbmuxd -f -p -v`
+* password `alpine` could be different and it should be whatever you set during the jailbreak
 
 please open the application before dumping.
 
