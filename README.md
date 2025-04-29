@@ -8,7 +8,7 @@ Pull a decrypted IPA from a jailbroken device
  2. `sudo pip install -r requirements.txt --upgrade`
  3. Run usbmuxd/iproxy SSH forwarding over USB (Default 2222 -> 22). e.g. `iproxy 2222 22`
  4. Launch the app in iOS and fetch its PID using `frida-ps -Uai | grep -i appname`
- 5. Run ./dump.py dump.py -H 127.0.0.1 -p 2222 -u mobile -P alpine `PID`
+ 5. Run ./dump.py -H 127.0.0.1 -p 2222 -u mobile -P alpine `PID`
 
 For SSH/SCP make sure you have your public key added to the target device's ~/.ssh/authorized_keys file.
 
